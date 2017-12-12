@@ -39,12 +39,9 @@ Spotify Muzik App is for non-commercial use only.
  */
  getToken(){
      var params = ('grant_type=client_credentials');
-
      var headers = new Headers();
      headers.append( 'Authorization', 'Basic ' + this.encoded);
-    
-     headers.append('Content-Type' , 'application/x-www-form-urlencoded');
-
+     headers.append('Content-Type' , 'application/x-www-form-urlencoded'); 
      return this._http.post('https://accounts.spotify.com/api/token', params , {headers : headers} )
      .map(res=> res.json());
   }
@@ -55,13 +52,10 @@ Spotify Muzik App is for non-commercial use only.
 */
 
 searchMusic(str:String, type:any ,token:string){   //type='artist'/track/album
-  
-     
     console.log(this.encoded+"console logger"+type); 
     this.searchUrl = 'https://api.spotify.com/v1/search?query='+str+'&offset=0&limit=50&type='+type;
     let headers = new Headers();
     headers.append('Authorization' , 'Bearer ' + token);
-
     return this._http.get(this.searchUrl , {headers : headers})
     .map((res: Response) => res.json())
 }
@@ -73,15 +67,12 @@ searchMusic(str:String, type:any ,token:string){   //type='artist'/track/album
  */
  
    getplaylist(token:string){ 
-     
     console.log(this.encoded);
     this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists?limit=10&offset=0'; 
     let headers = new Headers();
     headers.append('Authorization' , 'Bearer ' + token);
-
     return this._http.get(this.searchUrl , {headers : headers})
     .map((res: Response) => res.json())
-    
   }
   
 # Get user's exact Play list 
@@ -90,13 +81,11 @@ searchMusic(str:String, type:any ,token:string){   //type='artist'/track/album
 */
 
 getExactPlayList(id:any,token:string){ 
-    
-   console.log(this.encoded);
+ console.log(this.encoded);
    this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id; 
    let headers = new Headers();
    headers.append('Authorization' , 'Bearer ' + token);
-
-   return this._http.get(this.searchUrl , {headers : headers})
+  return this._http.get(this.searchUrl , {headers : headers})
    .map((res: Response) => res.json())
  }
  
@@ -107,11 +96,9 @@ getptracks(id:string ,token:string){
       this.searchUrl = 'https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id+'/tracks';
       let headers = new Headers();
       headers.append('Authorization' , 'Bearer ' + token);
-  
       return this._http.get(this.searchUrl , {headers : headers})
       .map((res: Response) => res.json())
-  
-  }
+ }
   
   # Refer 
   # https://developer.spotify.com/web-api/ 
