@@ -47,6 +47,7 @@ Spotify Muzik App is for non-commercial use only.
   }
 
 # SearchMuzik by Artist, Track, Album
+
 /*
 * This function lets you search  Artist, Track, Album on click of Respective tabs
 */
@@ -62,49 +63,51 @@ searchMusic(str:String, type:any ,token:string){   //type='artist'/track/album
 
 
  # Get the playlist
- /*
+
+/*
  *  This function gets all the user's Play lists
  */
  
-   getplaylist(token:string){ 
-    console.log(this.encoded);
-    this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists?limit=10&offset=0'; 
-    let headers = new Headers();
-    headers.append('Authorization' , 'Bearer ' + token);
-    return this._http.get(this.searchUrl , {headers : headers})
-    .map((res: Response) => res.json())
-  }
+ getplaylist(token:string){ 
+ console.log(this.encoded);
+ this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists?limit=10&offset=0'; 
+ let headers = new Headers();
+ headers.append('Authorization' , 'Bearer ' + token);
+ return this._http.get(this.searchUrl , {headers : headers})
+ .map((res: Response) => res.json())
+}
   
 # Get user's exact Play list 
+
 /*
 * Used to get details of user's selected Playlist
 */
 
 getExactPlayList(id:any,token:string){ 
- console.log(this.encoded);
-   this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id; 
-   let headers = new Headers();
-   headers.append('Authorization' , 'Bearer ' + token);
-  return this._http.get(this.searchUrl , {headers : headers})
-   .map((res: Response) => res.json())
+console.log(this.encoded);
+this.searchUrl='https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id; 
+let headers = new Headers();
+headers.append('Authorization' , 'Bearer ' + token);
+return this._http.get(this.searchUrl , {headers : headers})
+.map((res: Response) => res.json())
  }
  
  # Get the tracks of the selected play list
 
 getptracks(id:string ,token:string){
-      console.log(id+"-------------------");
-      this.searchUrl = 'https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id+'/tracks';
-      let headers = new Headers();
-      headers.append('Authorization' , 'Bearer ' + token);
-      return this._http.get(this.searchUrl , {headers : headers})
-      .map((res: Response) => res.json())
+console.log(id+"-------------------");
+this.searchUrl = 'https://api.spotify.com/v1/users/'+this.userId+'/playlists/'+id+'/tracks';
+let headers = new Headers();
+headers.append('Authorization' , 'Bearer ' + token);
+return this._http.get(this.searchUrl , {headers : headers})
+.map((res: Response) => res.json())
  }
   
-  # Refer 
-  # https://developer.spotify.com/web-api/ 
-  # https://developer.spotify.com/web-api/endpoint-reference/
+# Refer 
+# https://developer.spotify.com/web-api/ 
+# https://developer.spotify.com/web-api/endpoint-reference/
   
-  # Code of conduct
-  This project adheres to the Open Code of Conduct. By contributing, you are expected to honor this code.
+# Code of conduct
+This project adheres to the Open Code of Conduct. By contributing, you are expected to honor this code.
   
   
